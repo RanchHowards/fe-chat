@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { CHATS } from './queries'
+import { useQuery } from '@apollo/client'
 
 function App() {
+  const { data, loading, error } = useQuery(CHATS)
+
+  if (loading || error) return <h1>LOADING</h1>
+  const messages = data.chats[0].messages //built just for one Chat, must be expanded
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ul>
+      {messages.map((m) => (
+        <li key={m.id}>{m.message}</li>
+      ))}
+    </ul>
+  )
 }
 
-export default App;
+export default App

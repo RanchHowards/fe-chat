@@ -1,0 +1,62 @@
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+
+import { CHATS, CREATE_CHAT } from '../queries'
+import { useQuery, useMutation } from '@apollo/client'
+
+const Home = () => {
+  const [name, setName] = useState('')
+
+  const [createChat] = useMutation(CREATE_CHAT, {
+    update: (store, response) => {
+      try {
+        const dataInStore = store.readQuery({ query: CHATS })
+        store.writeQuery({
+          query: CHATS,
+          data: {
+            chats: [
+              ...dataInStore.chats,
+              { ...response.data.createChat, messages: [] },
+            ],
+          },
+        })
+      } catch (err) {
+        throw new Error(
+          'error from App.js trying to write to Cache from createChat',
+          err.message
+        )
+      }
+    },
+  })
+  const handleChat = (e) => {
+    e.preventDefault()
+    createChat({ variables: { name } })
+    setName('')
+  }
+  const { data, loading, error } = useQuery(CHATS)
+
+  if (loading || error) return <h1>LOADING</h1>
+  const chats = data.chats
+  return (
+    <div>
+      <form onSubmit={(e) => handleChat(e)}>
+        <input
+          value={name}
+          onChange={({ target }) => setName(target.value)}
+        ></input>
+        <button type="submit">Create Chat</button>
+      </form>
+
+      <ul>
+        {chats.map((chat) => (
+          <Link to={chat.id}>
+            <button className="chat-button" key={chat.id}>
+              {chat.name}
+            </button>
+          </Link>
+        ))}
+      </ul>
+    </div>
+  )
+}
+export default Home

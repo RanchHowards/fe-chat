@@ -61,13 +61,59 @@ export const CHATS = gql`
   query {
     chats {
       id
+      name
       messages {
         message
         author
+        id
+        chatID
       }
     }
   }
 `
+export const FIND_CHAT = gql`
+  query findChat($id: ID) {
+    findChat(id: $id) {
+      name
+      id
+      messages {
+        message
+        author
+        id
+        chatID
+      }
+    }
+  }
+`
+
+export const ADD_MESSAGE = gql`
+  mutation addMessage($message: String, $author: String, $chatID: ID) {
+    addMessage(message: $message, author: $author, chatID: $chatID) {
+      message
+      author
+      id
+      chatID
+    }
+  }
+`
+export const CREATE_CHAT = gql`
+  mutation createChat($name: String) {
+    createChat(name: $name) {
+      id
+      name
+    }
+  }
+`
+export const MESSAGE_ADDED = gql`
+  subscription {
+    messageAdded {
+      message
+      author
+      chatID
+    }
+  }
+`
+
 // export const ALL_USERS = gql`
 //   query {
 //     allUsers {

@@ -105,8 +105,8 @@ export const CREATE_CHAT = gql`
   }
 `
 export const MESSAGE_ADDED = gql`
-  subscription {
-    messageAdded {
+  subscription messageAdded($chatID: ID) {
+    messageAdded(chatID: $chatID) {
       message
       author
       chatID

@@ -2,8 +2,11 @@ import { InMemoryCache } from '@apollo/client'
 
 export const cache = new InMemoryCache({
   typePolicies: {
-    Chat: {
-      merge: false,
+    // Chat: {
+    //   merge: false,
+    // },
+    Query: {
+      fields: { chats: { merge: false } },
     },
   },
   //     Query: {

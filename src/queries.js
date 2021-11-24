@@ -92,7 +92,6 @@ export const ADD_MESSAGE = gql`
       message
       author
       id
-      chatID
     }
   }
 `
@@ -104,12 +103,20 @@ export const CREATE_CHAT = gql`
     }
   }
 `
+export const DELETE_CHAT = gql`
+  mutation deleteChat($chatID: ID) {
+    deleteChat(chatID: $chatID) {
+      id
+    }
+  }
+`
 export const MESSAGE_ADDED = gql`
   subscription messageAdded($chatID: ID) {
     messageAdded(chatID: $chatID) {
       message
       author
       chatID
+      id
     }
   }
 `

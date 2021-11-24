@@ -42,7 +42,9 @@ const Rooms = () => {
     <div>
       <header className="chatroom-header">
         <div className="chatroom-header-container">
-          <h1 style={{ color: 'white', margin: '0' }}>ChatApp</h1>
+          <Link to="/">
+            <h1 style={{ color: 'white', margin: '0' }}>ChatApp</h1>
+          </Link>
         </div>
       </header>
       <section className="chatroom-container">

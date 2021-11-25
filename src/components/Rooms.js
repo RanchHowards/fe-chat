@@ -43,29 +43,26 @@ const Rooms = () => {
       <header className="chatroom-header">
         <div className="chatroom-header-container">
           <Link to="/">
-            <h1 style={{ color: 'white', margin: '0' }}>ChatApp</h1>
+            <h1>ChatApp</h1>
           </Link>
         </div>
       </header>
       <section className="chatroom-container">
-        <form onSubmit={(e) => handleChat(e)}>
+        <form id="chatroom-form" onSubmit={(e) => handleChat(e)}>
           <input
+            className="chatroom-input"
+            placeholder="chatroom name"
             value={name}
             onChange={({ target }) => setName(target.value)}
           ></input>
           <button type="submit">Create Chat</button>
         </form>
 
-        <ul>
+        <ul id="chatroom-list">
           {chats.map((chat) => (
             <li key={chat.id}>
               <Link to={chat.id}>
-                <button
-                  className="chat-button"
-                  style={{ backgroundColor: '#f14ebd' }}
-                >
-                  {chat.name}
-                </button>
+                <button className="chat-button">{chat.name}</button>
               </Link>
             </li>
           ))}

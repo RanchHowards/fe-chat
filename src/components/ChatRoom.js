@@ -10,7 +10,7 @@ import {
 } from '../queries'
 import { useQuery, useSubscription, useMutation } from '@apollo/client'
 
-const ChatRoom = (props, { user }) => {
+const ChatRoom = ({ user }) => {
   //ROUTER INFO
   const id = useParams().id
   const navigate = useNavigate()
@@ -103,15 +103,16 @@ const ChatRoom = (props, { user }) => {
     <div>
       <header className="chatroom-header">
         <div className="chatroom-header-container">
-          <h1 style={{ color: 'white', margin: '0' }}>{chat.name}</h1>
+          <h1>{chat.name}</h1>
           <Link to="/rooms">
-            <button>BACK</button>
+            <button id="back-button">BACK</button>
           </Link>
         </div>
       </header>
       <section className="chatroom-container">
         <form onSubmit={(e) => handleMessage(e)}>
           <input
+            className="chatroom-input"
             value={message}
             onChange={({ target }) => setMessage(target.value)}
           ></input>
@@ -121,14 +122,8 @@ const ChatRoom = (props, { user }) => {
         <ul className="chat-box">
           {messages.map((msg) => (
             <li
-              className="message"
-              style={
-                user === msg.author
-                  ? { backgroundColor: 'green', alignSelf: 'flex-start' }
-                  : {
-                      backgroundColor: 'rgba(200, 200, 33)',
-                      alignSelf: 'flex-end',
-                    }
+              className={
+                user === msg.author ? 'message user-message' : 'message'
               }
               key={msg.id}
             >

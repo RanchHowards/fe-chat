@@ -12,8 +12,8 @@ function App() {
       <Routes>
         <Route path="/rooms/:id" element={<ChatRoom user={user} />} />
         <Route path="/rooms" element={<Rooms />} />
-        <Route path="/" element={<Home setUser={setUser} user={user} />} />
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/home" element={<Home setUser={setUser} user={user} />} />
+        <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
     </div>
   )

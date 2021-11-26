@@ -42,7 +42,7 @@ const Rooms = () => {
     <div>
       <header className="chatroom-header">
         <div className="chatroom-header-container">
-          <Link to="/">
+          <Link to="/home">
             <h1>ChatApp</h1>
           </Link>
         </div>

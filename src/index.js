@@ -18,11 +18,11 @@ import { WebSocketLink } from '@apollo/client/link/ws'
 import { cache } from './cache'
 
 const httpLink = createHttpLink({
-  uri: 'https://floating-spire-74284.herokuapp.com/',
+  uri: 'https://floating-spire-74284.herokuapp.com/graphql',
 })
 
 const wsLink = new WebSocketLink({
-  uri: 'ws://https://floating-spire-74284.herokuapp.com/',
+  uri: 'ws://floating-spire-74284.herokuapp.com/graphql',
   options: {
     reconnect: true,
     //can add AUTH in over webSocket

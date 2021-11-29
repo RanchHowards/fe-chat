@@ -94,7 +94,7 @@ const ChatRoom = ({ user }) => {
   if (loading || error)
     return (
       <div class="loading">
-        <img src="../../Icons/Loading.svg" alt="loading animation" />
+        <img src="../../public/Loading.svg" alt="loading animation" />
       </div>
     )
 

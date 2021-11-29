@@ -23,6 +23,7 @@ const httpLink = createHttpLink({
 
 const wsLink = new WebSocketLink({
   uri: 'wss://floating-spire-74284.herokuapp.com/graphql',
+  // uri: `wss://${window.location.hostanme}:27558/graphql`,
   options: {
     reconnect: true,
     //can add AUTH in over webSocket

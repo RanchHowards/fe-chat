@@ -13,7 +13,7 @@ const Home = ({ user, setUser }) => {
         ></input>
         <Link to="/rooms">
           {!user ? (
-            <button className="enter-button" id="enter-button" disabled>
+            <button className="enter-button e-b-disabled" disabled>
               Enter
             </button>
           ) : (

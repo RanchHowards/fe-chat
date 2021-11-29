@@ -57,7 +57,9 @@ a {
 
 .message {
   align-self: flex-end;
-  padding: 0.3em 1.2em;
+  display: flex;
+  align-items: flex-start;
+  padding: 0.3em 1.2em 0.3em 0.2em;
   margin: 0.5em 0.1em 0.1em 0;
   border: 0.16em solid rgba(255, 255, 255, 0);
   border-radius: 2em;
@@ -75,7 +77,8 @@ a {
   align-self: flex-start;
   background-color: var(--orange);
 }
-.landing {
+.landing,
+.loading {
   display: grid;
   place-items: center;
   height: 70vh;
@@ -117,23 +120,30 @@ a {
   padding: 0.3em 3em;
   text-align: center;
 }
+
 .chat-box {
   display: flex;
   flex-direction: column-reverse;
-  background-color: rgba(83, 83, 83, 0.815);
+  background-color: #8f7156;
   padding: 1em;
   margin-top: 1em;
-  border: 1px solid var(--yellow);
+  border: 5px solid var(--yellow);
 }
-.message-author {
+.message > span {
   font-size: 0.5em;
+  font-weight: bolder;
   padding: 0 1em 1em 0;
-  color: black;
+  color: var(--blue);
 }
+
 .chat-button:hover,
 #back-button:hover,
 button:hover {
   border-color: #ffffff;
+}
+.e-b-disabled,
+.e-b-disabled:hover {
+  border: none;
 }
 
 .chatroom-header {

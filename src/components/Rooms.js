@@ -35,7 +35,12 @@ const Rooms = () => {
   }
   const { data, loading, error } = useQuery(CHATS)
 
-  if (loading || error) return <h1>LOADING</h1>
+  if (loading || error)
+    return (
+      <div class="loading">
+        <img src="../../Icons/Loading.svg" alt="loading animation" />
+      </div>
+    )
   const chats = data.chats
 
   return (

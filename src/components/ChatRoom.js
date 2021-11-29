@@ -35,7 +35,6 @@ const ChatRoom = ({ user }) => {
         query: FIND_CHAT,
         variables: { id },
       })
-      console.log('BEFORE', dataInStore)
 
       if (!includedIn(dataInStore.findChat.messages, newMessage)) {
         client.writeQuery({
@@ -52,25 +51,6 @@ const ChatRoom = ({ user }) => {
           },
         })
       }
-      const dataInStore2 = client.readQuery({
-        query: FIND_CHAT,
-        variables: { id },
-      })
-      console.log('AFTER', dataInStore2)
-
-      // client.writeQuery({
-      //   query: FIND_CHAT,
-      //   variables: { id },
-      //   data: {
-      //     findChat: {
-      //       ...dataInStore.findChat,
-      //       messages: dataInStore.findChat.messages.concat({
-      //         ...newMessage,
-      //         chatID: id,
-      //       }),
-      //     },
-      //   },
-      // })
     } catch (err) {
       throw new Error(
         'error from App.js trying to write to Cache from createChat',
@@ -111,7 +91,12 @@ const ChatRoom = ({ user }) => {
       setTimer(deleteTimer)
     },
   })
-  if (loading || error) return <h1 style={{ color: 'white' }}>LOADING/ERROR</h1>
+  if (loading || error)
+    return (
+      <div class="loading">
+        <img src="../../Icons/Loading.svg" alt="loading animation" />
+      </div>
+    )
 
   const chat = data.findChat
   const messages = chat.messages

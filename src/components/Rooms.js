@@ -30,8 +30,10 @@ const Rooms = () => {
   })
   const handleChat = (e) => {
     e.preventDefault()
-    createChat({ variables: { name } })
-    setName('')
+    if (name.length > 0) {
+      createChat({ variables: { name } })
+      setName('')
+    }
   }
   const { data, loading, error } = useQuery(CHATS)
 

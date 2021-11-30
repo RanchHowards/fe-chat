@@ -37,8 +37,11 @@ const Rooms = () => {
 
   if (loading || error)
     return (
-      <div class="loading">
-        <img src="../../public/Loading.svg" alt="loading animation" />
+      <div className="loading">
+        <img
+          src={process.env.PUBLIC_URL + '/Loading.svg'}
+          alt="loading animation"
+        />
       </div>
     )
   const chats = data.chats
